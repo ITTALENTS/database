@@ -52,16 +52,16 @@ CREATE TABLE `profiles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `reservations` (
-  `reservationId` int(11) NOT NULL AUTO_INCREMENT,
-  `passengerId` int(11) NOT NULL,
-  `adId` int(11) NOT NULL,
-  PRIMARY KEY (`reservationId`),
-  KEY `fk_passengers0_idx` (`passengerId`),
-  KEY `fk_ads_idx` (`adId`),
-  CONSTRAINT `fk_passengers0` FOREIGN KEY (`passengerId`) REFERENCES `passengers` (`passengerId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_ads` FOREIGN KEY (`adId`) REFERENCES `ads` (`adId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `voting` (
+  `voteId` int(11) NOT NULL AUTO_INCREMENT,
+  `driverId` int(11) NOT NULL,
+  `numberOfVotes` int(11) NOT NULL,
+  PRIMARY KEY (`voteId`),
+  KEY `fk_passengers0_idx` (`driverId`),
+  KEY `fk_ads_idx` (`numberOfVotes`),
+  CONSTRAINT `fk_drivers_vote` FOREIGN KEY (`driverId`) REFERENCES `drivers` (`driverId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 
 
 
